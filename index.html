@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PraxBen | Benjamin Williams</title>
+<meta name="description" content="Economics, History, Liberty. The official platform of Benjamin Williams.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--navy:#0B1B33;
+--gold:#C8A14A;
+--white:#F8F8F8;
+--gray:#D9D9D9;
+--max:1200px;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:var(--white);
+color:#111;
+line-height:1.6;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.container{
+width:90%;
+max-width:var(--max);
+margin:auto;
+}
+
+header{
+background:var(--navy);
+border-bottom:1px solid rgba(200,161,74,.35);
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 0;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.brand img{
+height:52px;
+width:auto;
+border-radius:4px;
+}
+
+.brand-name{
+font-family:'Cinzel',serif;
+font-size:1.5rem;
+letter-spacing:2px;
+color:var(--gold);
+}
+
+nav ul{
+display:flex;
+gap:28px;
+list-style:none;
+}
+
+nav a{
+color:var(--white);
+font-size:.95rem;
+transition:.2s;
+}
+
+nav a:hover{
+color:var(--gold);
+}
+
+.hero{
+background:linear-gradient(rgba(11,27,51,.94),rgba(11,27,51,.94)),
+url('your-logo.jpg') center/cover no-repeat;
+min-height:92vh;
+display:flex;
+align-items:center;
+}
+
+.hero-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
+}
+
+.hero h1{
+font-family:'Cinzel',serif;
+font-size:4rem;
+color:var(--white);
+margin-bottom:12px;
+}
+
+.hero h2{
+font-size:1.45rem;
+color:var(--gold);
+margin-bottom:22px;
+font-weight:500;
+}
+
+.hero p{
+color:#e6e6e6;
+font-size:1.1rem;
+max-width:560px;
+margin-bottom:30px;
+}
+
+.buttons{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:14px 26px;
+border-radius:4px;
+font-weight:600;
+transition:.25s;
+display:inline-block;
+}
+
+.btn-gold{
+background:var(--gold);
+color:#111;
+}
+
+.btn-gold:hover{
+transform:translateY(-2px);
+}
+
+.btn-outline{
+border:1px solid var(--gold);
+color:var(--gold);
+}
+
+.btn-outline:hover{
+background:rgba(200,161,74,.08);
+}
+
+.hero-logo{
+text-align:center;
+}
+
+.hero-logo img{
+max-width:360px;
+width:100%;
+filter:drop-shadow(0 0 18px rgba(200,161,74,.18));
+}
+
+section{
+padding:90px 0;
+}
+
+.section-title{
+font-family:'Cinzel',serif;
+font-size:2.2rem;
+margin-bottom:16px;
+text-align:center;
+color:var(--navy);
+}
+
+.section-sub{
+text-align:center;
+color:#555;
+margin-bottom:50px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:26px;
+}
+
+.card{
+background:#fff;
+padding:28px;
+border:1px solid #ececec;
+border-radius:8px;
+box-shadow:0 10px 20px rgba(0,0,0,.04);
+}
+
+.card h3{
+font-family:'Cinzel',serif;
+font-size:1.2rem;
+color:var(--navy);
+margin-bottom:12px;
+}
+
+.dark{
+background:var(--navy);
+color:var(--white);
+}
+
+.dark .section-title{
+color:var(--white);
+}
+
+.media-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.media-box{
+height:180px;
+background:#13294d;
+border:1px solid rgba(255,255,255,.08);
+display:flex;
+align-items:center;
+justify-content:center;
+color:var(--gold);
+font-weight:600;
+border-radius:8px;
+}
+
+.quote{
+text-align:center;
+font-family:'Cinzel',serif;
+font-size:2rem;
+color:var(--gold);
+max-width:900px;
+margin:auto;
+line-height:1.4;
+}
+
+.newsletter{
+background:var(--navy);
+border:2px solid var(--gold);
+border-radius:10px;
+padding:50px;
+text-align:center;
+}
+
+.newsletter h3{
+font-family:'Cinzel',serif;
+font-size:2rem;
+color:var(--white);
+margin-bottom:14px;
+}
+
+.newsletter p{
+color:#ddd;
+margin-bottom:24px;
+}
+
+.newsletter form{
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.newsletter input{
+padding:14px;
+min-width:300px;
+border:none;
+border-radius:4px;
+}
+
+footer{
+background:#081426;
+padding:36px 0;
+text-align:center;
+color:#cfcfcf;
+font-size:.95rem;
+}
+
+footer .small-logo{
+height:48px;
+margin-bottom:12px;
+}
+
+@media(max-width:980px){
+.hero-grid,
+.cards,
+.media-grid{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:3rem;
+}
+
+nav ul{
+gap:16px;
+flex-wrap:wrap;
+justify-content:flex-end;
+}
+}
+
+@media(max-width:680px){
+.navbar{
+flex-direction:column;
+gap:18px;
+}
+
+.hero{
+padding:60px 0;
+min-height:auto;
+}
+
+.hero h1{
+font-size:2.3rem;
+}
+
+.hero h2{
+font-size:1.1rem;
+}
+
+.newsletter{
+padding:32px 20px;
+}
+
+.newsletter input{
+min-width:100%;
+}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container navbar">
+
+<div class="brand">
+<img src="your-logo.jpg" alt="PraxBen Logo">
+<div class="brand-name">PRAXBEN</div>
+</div>
+
+<nav>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#essays">Essays</a></li>
+<li><a href="#media">Media</a></li>
+<li><a href="#library">Library</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+</div>
+</header>
+
+<section class="hero">
+<div class="container hero-grid">
+
+<div>
+<h1>Benjamin Williams</h1>
+<h2>Economics. History. Liberty.</h2>
+
+<p>
+Defending truth, markets, civilization, and moral order through rigorous argument and historical evidence.
+</p>
+
+<div class="buttons">
+<a href="#essays" class="btn btn-gold">Read Essays</a>
+<a href="#media" class="btn btn-outline">Watch Media</a>
+</div>
+</div>
+
+<div class="hero-logo">
+<img src="your-logo.jpg" alt="PB Logo">
+</div>
+
+</div>
+</section>
+
+<section id="essays">
+<div class="container">
+
+<h2 class="section-title">Featured Writing</h2>
+<p class="section-sub">Essays on economics, history, politics, and faith.</p>
+
+<div class="cards">
+
+<div class="card">
+<h3>Why Nazi Germany Was Not Capitalist</h3>
+<p>A historical and economic rebuttal to one of the most common myths in modern politics.</p>
+</div>
+
+<div class="card">
+<h3>China: Ruined by Socialism, Saved by Markets</h3>
+<p>How liberalization created prosperity where planning created scarcity.</p>
+</div>
+
+<div class="card">
+<h3>The Cuban Socialist Paradox</h3>
+<p>Why ideological narratives survive repeated economic failure.</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="media" class="dark">
+<div class="container">
+
+<h2 class="section-title">Debates & Media</h2>
+<p class="section-sub">Video appearances, clips, interviews, and commentary.</p>
+
+<div class="media-grid">
+<div class="media-box">Debate Clip</div>
+<div class="media-box">Interview</div>
+<div class="media-box">Podcast</div>
+<div class="media-box">Lecture</div>
+</div>
+
+</div>
+</section>
+
+<section class="dark">
+<div class="container">
+<div class="quote">
+“Freedom is not sustained by slogans, but by truth.”
+</div>
+</div>
+</section>
+
+<section id="library">
+<div class="container">
+
+<h2 class="section-title">Essential Reading</h2>
+<p class="section-sub">Books and thinkers that shaped the PraxBen worldview.</p>
+
+<div class="cards">
+<div class="card"><h3>Human Action</h3><p>Ludwig von Mises</p></div>
+<div class="card"><h3>Democracy: The God That Failed</h3><p>Hans-Hermann Hoppe</p></div>
+<div class="card"><h3>The Power of Capitalism</h3><p>Rainer Zitelmann</p></div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="newsletter">
+
+<h3>Join the PraxBen Briefing</h3>
+<p>Weekly essays, clips, and sharp arguments.</p>
+
+<form>
+<input type="email" placeholder="Enter your email">
+<a href="#" class="btn btn-gold">Subscribe</a>
+</form>
+
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<img src="your-logo.jpg" class="small-logo" alt="Logo">
+<p>PRAXBEN</p>
+<p>© 2026 PraxBen.com</p>
+</div>
+</footer>
+
+</body>
+</html>
