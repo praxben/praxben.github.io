@@ -156,6 +156,9 @@ font-family:'Cinzel',serif;font-weight:700;
 font-size:1.22rem;line-height:1.35;color:var(--navy);margin-bottom:14px;
 }
 .card p{font-family:'Libre Baskerville',Georgia,serif;font-size:.96rem;color:#4A453E}
+.card h3 a:hover{color:var(--gold)}
+.read-more{display:inline-block;margin-top:16px;font-family:'Cinzel',serif;font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.read-more:hover{color:var(--navy)}
 
 /* Media */
 .dark{background:var(--grain),var(--navy);color:var(--cream)}
@@ -220,6 +223,14 @@ background:transparent;color:var(--navy);border:1px solid #D6CBB6;padding:9px 18
 .press-item a.go{font-family:'Cinzel',serif;font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
 .press-item a.go:hover{color:var(--navy)}
 .press-item .player{grid-column:1/-1;max-width:640px;margin-top:6px}
+#writing{margin-top:70px}
+#writing[hidden]{display:none}
+.sub-head.light{max-width:880px;margin-left:auto;margin-right:auto;border-bottom:0;margin-bottom:0}
+.sub-head.light h3{color:var(--navy)}
+@media(max-width:760px){
+.press-item{grid-template-columns:1fr auto;gap:6px 16px}
+.press-item time{grid-column:1/-1}
+}
 
 /* Quote */
 .quote-band{
@@ -349,9 +360,17 @@ footer nav{display:block}
 </article>
 <article class="card">
 <span class="eyebrow">Politics</span>
-<h3>The Cuban Socialist Paradox</h3>
+<h3><a href="https://fee.org/articles/the-cuban-socialist-paradox/" target="_blank" rel="noopener">The Cuban Socialist Paradox</a></h3>
 <p>Why ideological narratives survive repeated economic failure.</p>
+<a class="read-more" href="https://fee.org/articles/the-cuban-socialist-paradox/" target="_blank" rel="noopener">Read at FEE →</a>
 </article>
+</div>
+
+<div id="writing" hidden>
+<div class="sub-head light">
+<h3>Published Elsewhere</h3>
+</div>
+<ul class="press-list writing-list"></ul>
 </div>
 </div>
 </section>
@@ -407,14 +426,14 @@ footer nav{display:block}
 <div class="section-head">
 <span class="eyebrow">In the Media</span>
 <h2 class="section-title">Press &amp; Appearances</h2>
-<p class="section-sub">Interviews, podcasts and articles.</p>
+<p class="section-sub">News features, debates and podcast interviews.</p>
 <div class="rule"></div>
 </div>
 <div class="filters" role="group" aria-label="Filter appearances">
 <button type="button" data-filter="all" aria-pressed="true">All</button>
-<button type="button" data-filter="video" aria-pressed="false">Video</button>
+<button type="button" data-filter="press" aria-pressed="false">Press</button>
+<button type="button" data-filter="video" aria-pressed="false">Debates &amp; Video</button>
 <button type="button" data-filter="podcast" aria-pressed="false">Podcasts</button>
-<button type="button" data-filter="article" aria-pressed="false">Articles</button>
 </div>
 <ul class="press-list"></ul>
 </div>
@@ -478,14 +497,28 @@ footer nav{display:block}
 <script>
 // Press & Appearances: built from appearances.js, hidden while the list is empty.
 (function(){
-var items=(window.APPEARANCES||[]).slice().sort(function(a,b){return (b.date||'').localeCompare(a.date||'')});
-if(!items.length) return;
-var sec=document.getElementById('press'), list=sec.querySelector('.press-list');
-var label={video:'Video',podcast:'Podcast',article:'Article'};
 function esc(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function fmt(d){var t=new Date(d+'T12:00:00');return isNaN(t)?esc(d):t.toLocaleDateString('en-US',{month:'short',year:'numeric'})}
+function newest(a,b){return (b.date||'').localeCompare(a.date||'')}
+
+// Published writing (articles he wrote for other outlets)
+var writing=(window.WRITING||[]).slice().sort(newest);
+if(writing.length){
+var w=document.getElementById('writing');
+w.querySelector('.writing-list').innerHTML=writing.map(function(it){
+return '<li class="press-item"><time datetime="'+esc(it.date)+'">'+fmt(it.date)+'</time>'+
+'<div><h3>'+esc(it.title)+'</h3><div class="outlet">'+esc(it.outlet)+'</div></div>'+
+'<a class="go" href="'+esc(it.url)+'" target="_blank" rel="noopener">Read →</a></li>';
+}).join('');
+w.hidden=false;
+}
+
+var items=(window.APPEARANCES||[]).slice().sort(newest);
+if(!items.length) return;
+var sec=document.getElementById('press'), list=sec.querySelector('.press-list');
+var label={press:'Press',video:'Debate / Video',podcast:'Podcast'};
 list.innerHTML=items.map(function(it){
-var verb=it.type==='article'?'Read':it.type==='podcast'?'Listen':'Watch';
+var verb=it.type==='press'?'Read':it.type==='podcast'?'Listen':'Watch';
 var player=it.youtube?'<div class="player"><button type="button" data-yt="'+esc(it.youtube)+'" aria-label="Play: '+esc(it.title)+'"><img src="https://i.ytimg.com/vi/'+esc(it.youtube)+'/hqdefault.jpg" alt="" loading="lazy"></button></div>':'';
 return '<li class="press-item" data-type="'+esc(it.type)+'"><time datetime="'+esc(it.date)+'">'+fmt(it.date)+'</time>'+
 '<div><span class="eyebrow kind">'+(label[it.type]||'Appearance')+'</span><h3>'+esc(it.title)+'</h3><div class="outlet">'+esc(it.outlet)+'</div></div>'+
