@@ -22,23 +22,26 @@
 <link rel="canonical" href="https://praxben.com/library.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 
 <style>
-.lib-hero{background:radial-gradient(ellipse at 70% 40%,rgba(182,137,51,.12),transparent 55%),var(--grain),var(--navy);padding:80px 0 70px;text-align:center}
-.lib-hero img{width:56px;margin:0 auto 22px}
-.lib-hero h1{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(2.2rem,5vw,3.4rem);color:var(--cream);line-height:1.1;margin:14px 0 16px}
-.lib-hero p{font-family:'Libre Baskerville',Georgia,serif;font-style:italic;color:#B9B1A2;max-width:620px;margin:0 auto}
-.lib-hero .count{font-family:'Cinzel',serif;font-weight:600;letter-spacing:.2em;font-size:.8rem;color:var(--gold);margin-top:26px;text-transform:uppercase}
+.lib-hero{position:relative;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse 60% 90% at 50% 0,rgba(207,165,82,.16),transparent 70%),radial-gradient(ellipse 120% 80% at 50% 130%,rgba(0,0,0,.5),transparent 60%),var(--grain),var(--navy);padding:90px 0 80px;text-align:center}
+.lib-hero::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;background-image:linear-gradient(rgba(182,137,51,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(182,137,51,.06) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 60% 80% at 50% 30%,#000,transparent 75%);mask-image:radial-gradient(ellipse 60% 80% at 50% 30%,#000,transparent 75%)}
+.lib-hero img{width:60px;margin:0 auto 24px;filter:drop-shadow(0 0 24px rgba(207,165,82,.3))}
+.lib-hero h1{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(2.4rem,6vw,4rem);line-height:1.08;margin:16px 0 18px;background:linear-gradient(180deg,#F6F0E2 20%,#D9CDB2 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lib-hero p{font-family:'Libre Baskerville',Georgia,serif;font-style:italic;color:#C2BAA9;max-width:640px;margin:0 auto;font-size:1.05rem}
+.lib-hero .count{font-family:'Cinzel',serif;font-weight:600;letter-spacing:.24em;font-size:.78rem;color:var(--gold);margin-top:30px;text-transform:uppercase}
+.lib-hero .rule{margin-top:26px}
 
-.toolbar{position:sticky;top:72px;z-index:20;background:var(--paper) var(--grain);border-bottom:1px solid #DED3C0;padding:18px 0}
+.toolbar{position:sticky;top:72px;z-index:20;background:rgba(244,239,228,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid #DED3C0;padding:18px 0}
 .toolbar .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .toolbar input[type=search]{flex:1 1 260px;font:inherit;padding:12px 14px;border:1px solid #D6CBB6;background:#FBF8F1;border-radius:2px;color:var(--ink)}
 .toolbar input[type=search]:focus{outline:2px solid var(--gold);outline-offset:1px}
 .toolbar select{font:inherit;font-size:.9rem;padding:11px 12px;border:1px solid #D6CBB6;background:#FBF8F1;border-radius:2px;color:var(--ink)}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.chip{font-family:'Cinzel',serif;font-weight:600;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;background:transparent;color:var(--navy);border:1px solid #D6CBB6;padding:7px 12px;border-radius:2px;cursor:pointer;white-space:nowrap}
+.chip{font-family:'Cinzel',serif;font-weight:600;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;background:rgba(251,248,241,.6);color:var(--navy);border:1px solid #D6CBB6;padding:7px 14px;border-radius:40px;cursor:pointer;white-space:nowrap;transition:border-color .25s,background .25s,color .25s}
+.chip:hover{border-color:var(--gold)}
 .chip[aria-pressed="true"]{background:var(--navy);color:var(--gold);border-color:var(--navy)}
 .chip:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
@@ -46,10 +49,11 @@
 .topic{margin-top:56px}
 .topic:first-child{margin-top:10px}
 .topic-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:2px solid var(--gold);padding-bottom:10px;margin-bottom:6px}
-.topic-head h2{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(1.3rem,2.6vw,1.7rem);color:var(--navy)}
+.topic-head h2{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--navy)}
 .topic-head span{font-size:.8rem;color:var(--muted)}
 .books{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);column-gap:40px}
-.book-row{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:16px 2px;border-bottom:1px solid #E3DACA}
+.book-row{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:16px 10px;border-bottom:1px solid #E3DACA;transition:background .3s}
+.book-row:hover{background:linear-gradient(90deg,rgba(182,137,51,.08),transparent 80%)}
 .book-row a.title{font-family:'Cinzel',serif;font-weight:700;font-size:1rem;line-height:1.35;color:var(--navy)}
 .book-row a.title:hover{color:var(--gold)}
 .book-row .by{grid-column:1;font-family:'Libre Baskerville',Georgia,serif;font-style:italic;font-size:.9rem;color:#4A453E}
@@ -75,6 +79,7 @@ body.review .tag.src{display:inline-block}
 @media(max-width:860px){.books{grid-template-columns:1fr}}
 @media(max-width:760px){.toolbar{top:72px;position:static}}
 </style>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
@@ -97,7 +102,8 @@ body.review .tag.src{display:inline-block}
 </ul>
 </nav>
 <ul class="social" aria-label="PraxBen on social media">
-<li><a href="https://www.tiktok.com/@praxben" target="_blank" rel="noopener me" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 3c.4 2.8 2.3 4.6 5 4.8M14 3v12a4 4 0 1 1-4-4"/></svg></a></li>
+<li><a href="https://www.tiktok.com/@prax.ben" target="_blank" rel="noopener me" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 3c.4 2.8 2.3 4.6 5 4.8M14 3v12a4 4 0 1 1-4-4"/></svg></a></li>
+<li><a href="https://www.instagram.com/prax.ben/" target="_blank" rel="noopener me" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a></li>
 <li><a href="https://www.youtube.com/@praxben" target="_blank" rel="noopener me" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg></a></li>
 <li><a href="https://praxben.substack.com" target="_blank" rel="noopener me" aria-label="Substack"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 4h14v2H5zM5 8h14v2H5zM5 12h14v8l-7-4-7 4z"/></svg></a></li>
 </ul>
@@ -108,12 +114,13 @@ body.review .tag.src{display:inline-block}
 <div class="review-bar"><div class="container" id="review-summary">Review mode.</div></div>
 
 <main>
-<section class="lib-hero" style="padding-bottom:70px">
+<section class="lib-hero">
 <div class="container">
 <img src="assets/praxben_monogram_gold.svg" alt="">
 <span class="eyebrow">The PraxBen Library</span>
 <h1>Read Your Way to Liberty</h1>
 <p>Economics, history, political philosophy and faith: the books behind the arguments, from first steps to the deep end.</p>
+<div class="rule"></div>
 <div class="count" id="count"></div>
 </div>
 </section>
@@ -148,7 +155,8 @@ body.review .tag.src{display:inline-block}
 <div class="container">
 <img src="assets/praxben_lockup_gold.svg" class="lockup" alt="PraxBen: Liberty. Reason. History.">
 <ul class="social" aria-label="PraxBen on social media">
-<li><a href="https://www.tiktok.com/@praxben" target="_blank" rel="noopener me" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 3c.4 2.8 2.3 4.6 5 4.8M14 3v12a4 4 0 1 1-4-4"/></svg></a></li>
+<li><a href="https://www.tiktok.com/@prax.ben" target="_blank" rel="noopener me" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 3c.4 2.8 2.3 4.6 5 4.8M14 3v12a4 4 0 1 1-4-4"/></svg></a></li>
+<li><a href="https://www.instagram.com/prax.ben/" target="_blank" rel="noopener me" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a></li>
 <li><a href="https://www.youtube.com/@praxben" target="_blank" rel="noopener me" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg></a></li>
 <li><a href="https://praxben.substack.com" target="_blank" rel="noopener me" aria-label="Substack"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 4h14v2H5zM5 8h14v2H5zM5 12h14v8l-7-4-7 4z"/></svg></a></li>
 </ul>
@@ -214,7 +222,7 @@ var href='https://www.google.com/search?tbm=bks&q='+encodeURIComponent(b[0]+' '+
 var src=b[5]||'s', srcLabel={w:'Cited in my writing',d:'In my library',s:'Suggested'}[src];
 return '<li class="book-row"><a class="title" href="'+href+'" target="_blank" rel="noopener">'+esc(b[0])+'</a>'+
 '<span class="yr">'+yr(b[2])+'</span><span class="by">'+esc(b[1])+'</span>'+
-'<span class="tags">'+(topRank(b)<99?'<span class="tag top">★ Top 8</span>':'')+'<span class="tag lvl-'+b[4]+'">'+LV[b[4]]+'</span>'+(b[5]==='w'?'<span class="tag ben">PraxBen cites</span>':'')+
+'<span class="tags">'+(topRank(b)<99?'<span class="tag top">★ Top pick</span>':'')+'<span class="tag lvl-'+b[4]+'">'+LV[b[4]]+'</span>'+(b[5]==='w'?'<span class="tag ben">PraxBen cites</span>':'')+
 '<span class="tag src src-'+src+'">'+srcLabel+'</span></span></li>';
 }
 function render(){
@@ -231,6 +239,7 @@ document.getElementById('list').innerHTML=out||'<p class="empty">No books match 
 render();
 })();
 </script>
+<script src="assets/fx.js"></script>
 <script src="/assets/analytics.js"></script>
 </body>
 </html>

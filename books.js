@@ -313,19 +313,23 @@ window.BOOKS = [
 ["The Vision of the Anointed", "Thomas Sowell", 1995, "Society & Culture", "start", ""],
 
 
-// ---------- Ben's top eight additions ----------
+// ---------- Ben's top picks additions ----------
 ["Killing History: The False Left-Right Political Spectrum", "L. K. Samuels", 2019, "Libertarianism", "start", "w"],
 ["The Machiavellians: Defenders of Freedom", "James Burnham", 1943, "Democracy", "mid", "w"],
 ["Confrontational Politics", "H. L. Richardson", 1998, "Conservatism", "start", "w"],
+["Anatomy of the State", "Murray N. Rothbard", 1974, "Libertarianism", "start", ""],
 
 ];
 
-// Ben's top eight, in order. Shown first in their topics with a "Top 8" badge.
+// Ben's top picks, in order. Shown first in their topics with a "Top pick" badge.
 window.TOP_PICKS = [
   "Democracy: The God That Failed",
+  "Anatomy of the State",
+  "Egalitarianism as a Revolt Against Nature",
   "To Overthrow the World: The Rise and Fall and Rise of Communism",
   "Killing History: The False Left-Right Political Spectrum",
   "The Machiavellians: Defenders of Freedom",
+  "The Pure Theory of Politics",
   "In Defense of Freedom and Related Essays",
   "Confrontational Politics",
   "Do Markets Corrupt Our Morals?",
