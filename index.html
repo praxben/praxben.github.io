@@ -19,6 +19,33 @@
 <meta property="og:image" content="https://praxben.com/assets/praxben_social.png">
 <meta name="twitter:card" content="summary">
 
+<link rel="canonical" href="https://praxben.com/">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Person",
+ "name": "Benjamin Williams",
+ "alternateName": "PraxBen",
+ "url": "https://praxben.com/",
+ "image": "https://praxben.com/assets/praxben_social.png",
+ "description": "Writer and video essayist on economics, history and liberty; former fellow with FEE's Henry Hazlitt Project for Educational Journalism.",
+ "knowsAbout": [
+  "Austrian economics",
+  "Socialism",
+  "Economic history",
+  "Libertarianism",
+  "Nazi Germany",
+  "Soviet Union"
+ ],
+ "sameAs": [
+  "https://www.youtube.com/@praxben",
+  "https://www.tiktok.com/@praxben",
+  "https://praxben.substack.com",
+  "https://fee.org/author/ben",
+  "https://mises.org/profile/benjamin-williams"
+ ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet">
@@ -33,14 +60,23 @@
 <img src="assets/praxben_monogram_gold.svg" alt="">
 <span class="brand-name">PRAXBEN</span>
 </a>
+<button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+<div class="nav-wrap">
 <nav aria-label="Main">
 <ul>
 <li><a href="#essays">Essays</a></li>
 <li><a href="#media">Media</a></li>
 <li><a href="library.html">Library</a></li>
 <li><a href="#briefing">Briefing</a></li>
+<li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
+<ul class="social" aria-label="PraxBen on social media">
+<li><a href="https://www.tiktok.com/@praxben" target="_blank" rel="noopener me" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 3c.4 2.8 2.3 4.6 5 4.8M14 3v12a4 4 0 1 1-4-4"/></svg></a></li>
+<li><a href="https://www.youtube.com/@praxben" target="_blank" rel="noopener me" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg></a></li>
+<li><a href="https://praxben.substack.com" target="_blank" rel="noopener me" aria-label="Substack"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 4h14v2H5zM5 8h14v2H5zM5 12h14v8l-7-4-7 4z"/></svg></a></li>
+</ul>
+</div>
 </div>
 </header>
 
@@ -96,6 +132,13 @@
 <a class="btn btn-outline btn-ink" href="https://praxben.substack.com/archive" target="_blank" rel="noopener">All essays on Substack</a>
 </div>
 
+<div id="latest-posts" hidden>
+<div class="sub-head light">
+<h3>Latest on Substack</h3>
+</div>
+<ul class="press-list"></ul>
+</div>
+
 <div id="writing" hidden>
 <div class="sub-head light">
 <h3>Published Elsewhere</h3>
@@ -117,7 +160,7 @@
 <h3>Video Essays</h3>
 <a href="https://www.youtube.com/@praxben/videos" target="_blank" rel="noopener">All videos →</a>
 </div>
-<div class="video-grid">
+<div class="video-grid" id="yt-videos">
 <article class="video">
 <div class="player"><button type="button" data-yt="IwYrAfpL0MQ" aria-label="Play: Why Did Cuba Fail? Socialism or Embargo?"><img src="https://i.ytimg.com/vi/IwYrAfpL0MQ/maxresdefault.jpg" alt="" loading="lazy"></button></div>
 <div class="video-info"><h4>Why Did Cuba Fail? Socialism or Embargo?</h4><time datetime="2026-10-29">October 2026</time></div>
@@ -136,7 +179,7 @@
 <h3>Shorts</h3>
 <a href="https://www.youtube.com/@praxben/shorts" target="_blank" rel="noopener">All shorts →</a>
 </div>
-<div class="shorts-grid">
+<div class="shorts-grid" id="yt-shorts">
 <a class="short" href="https://www.youtube.com/shorts/cyLlrdPCdtI" target="_blank" rel="noopener"><div class="thumb"><img src="https://i.ytimg.com/vi/cyLlrdPCdtI/hqdefault.jpg" alt="" loading="lazy"></div><span>Communist Lies About Famine</span></a>
 <a class="short" href="https://www.youtube.com/shorts/nkWvuifK-Xg" target="_blank" rel="noopener"><div class="thumb"><img src="https://i.ytimg.com/vi/nkWvuifK-Xg/hqdefault.jpg" alt="" loading="lazy"></div><span>Democratic Socialism Is a Scam</span></a>
 <a class="short" href="https://www.youtube.com/shorts/tElSXV92KnI" target="_blank" rel="noopener"><div class="thumb"><img src="https://i.ytimg.com/vi/tElSXV92KnI/hqdefault.jpg" alt="" loading="lazy"></div><span>Capitalism Is Anti-War</span></a>
@@ -219,17 +262,44 @@
 </div>
 </section>
 
+<section id="contact">
+<div class="container">
+<div class="contact">
+<div class="section-head">
+<span class="eyebrow">Contact</span>
+<h2 class="section-title">Press, Debates &amp; Speaking</h2>
+<p class="section-sub">Reporters, podcast hosts and event organizers: I'm available for interviews, debates and talks.</p>
+<div class="rule"></div>
+</div>
+<ul class="topics">
+<li>Austrian Economics</li><li>Socialism &amp; Communism</li><li>Nazi Economics</li><li>Economic History</li><li>Libertarianism</li><li>Faith &amp; Free Markets</li>
+</ul>
+<div class="buttons">
+<a class="btn btn-gold js-mail" data-subject="Interview / media request" href="#contact">Request an Interview</a>
+<a class="btn btn-outline btn-ink js-mail" data-subject="Debate challenge" href="#contact">Challenge Me to a Debate</a>
+</div>
+<p class="email-text">Or email <a class="js-mail js-mail-text" href="#contact">capitalistwave [at] gmail [dot] com</a></p>
+</div>
+</div>
+</section>
+
 </main>
 
 <footer>
 <div class="container">
 <img src="assets/praxben_lockup_gold.svg" class="lockup" alt="PraxBen: Liberty. Reason. History.">
+<ul class="social" aria-label="PraxBen on social media">
+<li><a href="https://www.tiktok.com/@praxben" target="_blank" rel="noopener me" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 3c.4 2.8 2.3 4.6 5 4.8M14 3v12a4 4 0 1 1-4-4"/></svg></a></li>
+<li><a href="https://www.youtube.com/@praxben" target="_blank" rel="noopener me" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg></a></li>
+<li><a href="https://praxben.substack.com" target="_blank" rel="noopener me" aria-label="Substack"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 4h14v2H5zM5 8h14v2H5zM5 12h14v8l-7-4-7 4z"/></svg></a></li>
+</ul>
 <nav aria-label="Footer">
 <ul>
 <li><a href="#essays">Essays</a></li>
 <li><a href="#media">Media</a></li>
 <li><a href="library.html">Library</a></li>
 <li><a href="#briefing">Briefing</a></li>
+<li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
 <p>© 2026 PraxBen.com · Benjamin Williams</p>
@@ -281,9 +351,25 @@ var navs=document.querySelectorAll('nav ul');
 navs.forEach(function(ul){var li=document.createElement('li');li.innerHTML='<a href="#press">Press</a>';ul.insertBefore(li,ul.children[2]);});
 })();
 
+// Email links are assembled here so the address isn't sitting in the page for spam bots.
+(function(){
+var addr=['capitalistwave','gmail.com'].join('@');
+document.querySelectorAll('.js-mail').forEach(function(a){
+a.href='mailto:'+addr+(a.dataset.subject?'?subject='+encodeURIComponent(a.dataset.subject):'');
+if(a.classList.contains('js-mail-text'))a.textContent=addr;
+});
+})();
+
+// Mobile menu
+(function(){
+var h=document.querySelector('header'),b=h&&h.querySelector('.menu-toggle');if(!b)return;
+b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu');});
+h.querySelectorAll('nav a').forEach(function(a){a.addEventListener('click',function(){h.classList.remove('open');b.setAttribute('aria-expanded','false');});});
+})();
+
 // Click-to-play: load the YouTube player only when a visitor asks for it.
-document.querySelectorAll('.player button[data-yt]').forEach(function(btn){
-btn.addEventListener('click',function(){
+document.addEventListener('click',function(e){
+var btn=e.target.closest('.player button[data-yt]');if(!btn)return;
 var f=document.createElement('iframe');
 f.src='https://www.youtube-nocookie.com/embed/'+btn.dataset.yt+'?autoplay=1&rel=0';
 f.title=btn.getAttribute('aria-label').replace('Play: ','');
@@ -291,8 +377,39 @@ f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; p
 f.allowFullscreen=true;
 btn.replaceWith(f);
 });
-});
+
+// Live feed: data/feed.json is refreshed nightly by a GitHub Action from YouTube and Substack.
+// The hand-written videos above stay as a fallback if the file can't be loaded.
+(function(){
+// Videos to keep off the home page (by YouTube id). Add ids here to hide them.
+var HIDE=['XUNGWBiZHmw','mCwUksDXjLk','t9HC1v0NWjY'];
+function esc(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function month(d){var t=new Date(d);return isNaN(t)?'':t.toLocaleDateString('en-US',{month:'long',year:'numeric'})}
+fetch('data/feed.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():Promise.reject()}).then(function(d){
+var vids=(d.videos||[]).filter(function(v){return HIDE.indexOf(v.id)<0}).slice(0,3);
+if(vids.length>=3){
+document.getElementById('yt-videos').innerHTML=vids.map(function(v){
+return '<article class="video"><div class="player"><button type="button" data-yt="'+esc(v.id)+'" aria-label="Play: '+esc(v.title)+'"><img src="https://i.ytimg.com/vi/'+esc(v.id)+'/hqdefault.jpg" alt="" loading="lazy"></button></div><div class="video-info"><h4>'+esc(v.title)+'</h4><time datetime="'+esc(v.published)+'">'+month(v.published)+'</time></div></article>';
+}).join('');
+}
+var shorts=(d.shorts||[]).filter(function(v){return HIDE.indexOf(v.id)<0}).slice(0,6);
+if(shorts.length>=6){
+document.getElementById('yt-shorts').innerHTML=shorts.map(function(v){
+return '<a class="short" href="https://www.youtube.com/shorts/'+esc(v.id)+'" target="_blank" rel="noopener"><div class="thumb"><img src="https://i.ytimg.com/vi/'+esc(v.id)+'/hqdefault.jpg" alt="" loading="lazy"></div><span>'+esc(v.title)+'</span></a>';
+}).join('');
+}
+var posts=(d.posts||[]).slice(0,5);
+if(posts.length){
+var box=document.getElementById('latest-posts');
+box.querySelector('ul').innerHTML=posts.map(function(p){
+return '<li class="press-item"><time datetime="'+esc(p.published)+'">'+month(p.published).replace(/ (\d{4})$/,' $1')+'</time><div><h3>'+esc(p.title)+'</h3><div class="outlet">'+esc(p.subtitle)+'</div></div><a class="go" href="'+esc(p.url)+'" target="_blank" rel="noopener">Read →</a></li>';
+}).join('');
+box.hidden=false;
+}
+}).catch(function(){});
+})();
 </script>
 
+<script src="/assets/analytics.js"></script>
 </body>
 </html>

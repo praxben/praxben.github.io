@@ -19,6 +19,7 @@
 <meta property="og:image" content="https://praxben.com/assets/praxben_social.png">
 <meta name="twitter:card" content="summary">
 
+<link rel="canonical" href="https://praxben.com/library.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet">
@@ -83,6 +84,8 @@ body.review .tag.src{display:inline-block}
 <img src="assets/praxben_monogram_gold.svg" alt="">
 <span class="brand-name">PRAXBEN</span>
 </a>
+<button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+<div class="nav-wrap">
 <nav aria-label="Main">
 <ul>
 <li><a href="index.html#essays">Essays</a></li>
@@ -90,8 +93,15 @@ body.review .tag.src{display:inline-block}
 <li><a href="index.html#press">Press</a></li>
 <li><a href="library.html" aria-current="page">Library</a></li>
 <li><a href="index.html#briefing">Briefing</a></li>
+<li><a href="index.html#contact">Contact</a></li>
 </ul>
 </nav>
+<ul class="social" aria-label="PraxBen on social media">
+<li><a href="https://www.tiktok.com/@praxben" target="_blank" rel="noopener me" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 3c.4 2.8 2.3 4.6 5 4.8M14 3v12a4 4 0 1 1-4-4"/></svg></a></li>
+<li><a href="https://www.youtube.com/@praxben" target="_blank" rel="noopener me" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg></a></li>
+<li><a href="https://praxben.substack.com" target="_blank" rel="noopener me" aria-label="Substack"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 4h14v2H5zM5 8h14v2H5zM5 12h14v8l-7-4-7 4z"/></svg></a></li>
+</ul>
+</div>
 </div>
 </header>
 
@@ -137,18 +147,30 @@ body.review .tag.src{display:inline-block}
 <footer>
 <div class="container">
 <img src="assets/praxben_lockup_gold.svg" class="lockup" alt="PraxBen: Liberty. Reason. History.">
+<ul class="social" aria-label="PraxBen on social media">
+<li><a href="https://www.tiktok.com/@praxben" target="_blank" rel="noopener me" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 3c.4 2.8 2.3 4.6 5 4.8M14 3v12a4 4 0 1 1-4-4"/></svg></a></li>
+<li><a href="https://www.youtube.com/@praxben" target="_blank" rel="noopener me" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg></a></li>
+<li><a href="https://praxben.substack.com" target="_blank" rel="noopener me" aria-label="Substack"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 4h14v2H5zM5 8h14v2H5zM5 12h14v8l-7-4-7 4z"/></svg></a></li>
+</ul>
 <nav aria-label="Footer">
 <ul>
 <li><a href="index.html#essays">Essays</a></li>
 <li><a href="index.html#media">Media</a></li>
 <li><a href="index.html#press">Press</a></li>
 <li><a href="library.html">Library</a></li>
+<li><a href="index.html#contact">Contact</a></li>
 </ul>
 </nav>
 <p>© 2026 PraxBen.com · Benjamin Williams</p>
 </div>
 </footer>
 
+<script>
+(function(){
+var h=document.querySelector('header'),b=h&&h.querySelector('.menu-toggle');if(!b)return;
+b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu');});
+})();
+</script>
 <script src="books.js"></script>
 <script>
 (function(){
@@ -209,5 +231,6 @@ document.getElementById('list').innerHTML=out||'<p class="empty">No books match 
 render();
 })();
 </script>
+<script src="/assets/analytics.js"></script>
 </body>
 </html>

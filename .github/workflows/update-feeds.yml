@@ -1,0 +1,37 @@
+name: Update YouTube and Substack feed
+
+on:
+  schedule:
+    - cron: "17 9 * * *"   # every day, ~3–4am Central
+  workflow_dispatch:        # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Refresh data/feed.json
+        run: python .github/scripts/update_feeds.py
+      - name: Commit if anything changed
+        run: |
+          if git diff --quiet -- data/feed.json; then
+            echo "No new videos or posts."
+            exit 0
+          fi
+          # Only the timestamp changed? Don't commit.
+          if [ "$(git diff -U0 -- data/feed.json | grep -E '^[+-] ' | grep -vc '"updated"')" = "0" ]; then
+            echo "Only the timestamp changed."
+            git checkout -- data/feed.json
+            exit 0
+          fi
+          git config user.name "praxben-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/feed.json
+          git commit -m "Update videos and posts from YouTube and Substack"
+          git push
