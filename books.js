@@ -312,4 +312,22 @@ window.BOOKS = [
 ["The Diversity Delusion", "Heather Mac Donald", 2018, "Schooling & Education", "start", ""],
 ["The Vision of the Anointed", "Thomas Sowell", 1995, "Society & Culture", "start", ""],
 
+
+// ---------- Ben's top eight additions ----------
+["Killing History: The False Left-Right Political Spectrum", "L. K. Samuels", 2019, "Libertarianism", "start", "w"],
+["The Machiavellians: Defenders of Freedom", "James Burnham", 1943, "Democracy", "mid", "w"],
+["Confrontational Politics", "H. L. Richardson", 1998, "Conservatism", "start", "w"],
+
+];
+
+// Ben's top eight, in order. Shown first in their topics with a "Top 8" badge.
+window.TOP_PICKS = [
+  "Democracy: The God That Failed",
+  "To Overthrow the World: The Rise and Fall and Rise of Communism",
+  "Killing History: The False Left-Right Political Spectrum",
+  "The Machiavellians: Defenders of Freedom",
+  "In Defense of Freedom and Related Essays",
+  "Confrontational Politics",
+  "Do Markets Corrupt Our Morals?",
+  "In Defense of Capitalism"
 ];

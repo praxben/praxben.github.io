@@ -59,6 +59,7 @@
 .tag.lvl-mid{border-color:#C9B07A;color:#8A6A25}
 .tag.lvl-deep{border-color:#B98A82;color:#7E453C}
 .tag.ben{background:var(--navy);border-color:var(--navy);color:var(--gold)}
+.tag.top{background:var(--gold);border-color:var(--gold);color:var(--navy)}
 .empty{text-align:center;padding:60px 0;color:var(--muted);font-family:'Libre Baskerville',Georgia,serif;font-style:italic}
 
 /* Review mode (?review): shows where each draft entry came from */
@@ -157,6 +158,8 @@ var TOPICS=(window.TOPICS||[]).filter(function(t){return BOOKS.some(function(b){
 var review=/[?&]review\b/.test(location.search);
 if(review) document.body.classList.add('review');
 var LV={start:'Start here',mid:'Intermediate',deep:'Advanced'}, LO={start:0,mid:1,deep:2};
+var TOP=window.TOP_PICKS||[];
+function topRank(b){var i=TOP.indexOf(b[0]);return i<0?99:i}
 var state={q:'',topic:'',level:'',sort:'level'};
 function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function yr(y){return y<0?'c. '+(-y)+' BC':(y<1000?'c. '+y:y)}
@@ -178,6 +181,7 @@ document.getElementById('review-summary').innerHTML='<strong>Review mode (draft)
 }
 
 function cmp(a,b){
+var t=topRank(a)-topRank(b);if(t)return t;
 if(state.sort==='title')return a[0].localeCompare(b[0]);
 if(state.sort==='author')return surname(a[1]).localeCompare(surname(b[1]));
 if(state.sort==='year')return a[2]-b[2];
@@ -188,7 +192,7 @@ var href='https://www.google.com/search?tbm=bks&q='+encodeURIComponent(b[0]+' '+
 var src=b[5]||'s', srcLabel={w:'Cited in my writing',d:'In my library',s:'Suggested'}[src];
 return '<li class="book-row"><a class="title" href="'+href+'" target="_blank" rel="noopener">'+esc(b[0])+'</a>'+
 '<span class="yr">'+yr(b[2])+'</span><span class="by">'+esc(b[1])+'</span>'+
-'<span class="tags"><span class="tag lvl-'+b[4]+'">'+LV[b[4]]+'</span>'+(b[5]==='w'?'<span class="tag ben">PraxBen cites</span>':'')+
+'<span class="tags">'+(topRank(b)<99?'<span class="tag top">★ Top 8</span>':'')+'<span class="tag lvl-'+b[4]+'">'+LV[b[4]]+'</span>'+(b[5]==='w'?'<span class="tag ben">PraxBen cites</span>':'')+
 '<span class="tag src src-'+src+'">'+srcLabel+'</span></span></li>';
 }
 function render(){

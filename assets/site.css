@@ -276,3 +276,10 @@ section{padding:72px 0}
 .newsletter .btn{width:100%}
 footer nav{display:block}
 }
+
+/* Top-8 reading grid */
+.cards.cards-4{grid-template-columns:repeat(4,1fr);gap:22px}
+.cards-4 .card{padding:28px 22px 24px}
+.cards-4 .card h3{font-size:1.05rem}
+@media(max-width:980px){.cards.cards-4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.cards.cards-4{grid-template-columns:1fr}}
