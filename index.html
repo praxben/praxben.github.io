@@ -114,6 +114,7 @@
 <div class="container">
 <span class="label">As featured in</span>
 <ul>
+<li class="it">The New York Times</li>
 <li class="caps">Associated Press</li>
 <li class="caps">ABC News Australia</li>
 <li class="it">The Daily Wire</li>
@@ -312,16 +313,25 @@
 <button type="button" class="btn btn-gold js-ask" data-kind="interview" aria-expanded="false" aria-controls="mail-pop">Request an Interview</button>
 <button type="button" class="btn btn-outline btn-ink js-ask" data-kind="debate" aria-expanded="false" aria-controls="mail-pop">Challenge Me to a Debate</button>
 </div>
-<div class="mail-pop" id="mail-pop" hidden>
+<form class="mail-pop ask-form" id="mail-pop" hidden novalidate>
 <p class="mail-lead"></p>
-<div class="mail-opts">
-<a class="mail-opt" data-via="gmail" target="_blank" rel="noopener">Open in Gmail</a>
-<a class="mail-opt" data-via="outlook" target="_blank" rel="noopener">Open in Outlook</a>
-<a class="mail-opt" data-via="app">Use my mail app</a>
-<button type="button" class="mail-opt" data-via="copy">Copy email address</button>
+<input type="hidden" name="kind" value="">
+<div class="f-grid">
+<label class="f"><span>Your name</span><input name="fullname" autocomplete="name" required maxlength="120"></label>
+<label class="f"><span>Email</span><input type="email" name="email" autocomplete="email" required maxlength="160"></label>
+<label class="f"><span data-for="interview">Outlet or show</span><span data-for="debate">Your channel or organization</span><input name="outlet" autocomplete="organization" maxlength="160"></label>
+<label class="f"><span>Proposed date</span><input name="date" maxlength="80" placeholder="e.g. week of Jan 12, flexible"></label>
+<label class="f f-wide" data-for="interview"><span>Topic</span><input name="topic" maxlength="200"></label>
+<label class="f f-wide" data-for="debate"><span>Proposed resolution</span><input name="resolution" maxlength="200" placeholder="e.g. Resolved: real socialism has never been tried"></label>
+<label class="f f-wide"><span data-for="interview">Format, deadline and anything else</span><span data-for="debate">Your position, format and venue</span><textarea name="message" rows="5" required maxlength="4000"></textarea></label>
+<label class="f-trap" aria-hidden="true">Leave this empty<input name="_honey" tabindex="-1" autocomplete="off"></label>
 </div>
-<p class="mail-note" aria-live="polite"></p>
+<div class="f-foot">
+<button type="submit" class="btn btn-gold">Send request</button>
+<p class="mail-note" role="status" aria-live="polite"></p>
 </div>
+<p class="f-alt">Prefer your own email? <a data-via="gmail" target="_blank" rel="noopener">Gmail</a> &middot; <a data-via="outlook" target="_blank" rel="noopener">Outlook</a> &middot; <a data-via="app">Mail app</a> &middot; <button type="button" data-via="copy">Copy address</button></p>
+</form>
 <p class="email-text">Or email <a class="js-mail js-mail-text" href="#contact">capitalistwave [at] gmail [dot] com</a></p>
 </div>
 </div>
@@ -399,9 +409,10 @@ var navs=document.querySelectorAll('nav ul');
 navs.forEach(function(ul){var li=document.createElement('li');li.innerHTML='<a href="#press">Press</a>';ul.insertBefore(li,ul.children[2]);});
 })();
 
-// Email: the address is assembled here so it isn't sitting in the page for spam bots.
-// The buttons open a small panel (Gmail, Outlook, mail app, copy) because a plain mailto:
-// link does nothing on computers without a mail app set up.
+// Contact: the buttons open an on-page request form. FormSubmit delivers it to Ben's inbox
+// (no account; the very first message triggers a one-time confirmation email to activate it).
+// The address is assembled here so it isn't sitting in the page for spam bots.
+// The "Prefer your own email?" links stay as a fallback.
 (function(){
 var addr=['capitalistwave','gmail.com'].join('@');
 document.querySelectorAll('.js-mail').forEach(function(a){
@@ -414,30 +425,58 @@ body:['Hi Ben,','','Outlet or show:','Topic:','Format (print, video, podcast, li
 debate:{lead:'Challenge me to a debate',subject:'Debate challenge',
 body:['Hi Ben,','','Proposed resolution:','Your position:','Format and venue (stream, in person, podcast):','Proposed date:','Host or moderator:','','Thanks,',''].join('\n')}
 };
-var pop=document.getElementById('mail-pop');if(!pop)return;
-var asks=document.querySelectorAll('.js-ask'),current=null;
+var form=document.getElementById('mail-pop');if(!form)return;
+var asks=document.querySelectorAll('.js-ask'),current=null,note=form.querySelector('.mail-note'),send=form.querySelector('[type=submit]');
 function enc(x){return encodeURIComponent(x)}
+function say(msg,cls){note.className='mail-note'+(cls?' '+cls:'');note.textContent=msg}
 function fill(k){
-var m=KINDS[k];current=k;
-pop.querySelector('.mail-lead').innerHTML='<strong>'+m.lead+'</strong> &middot; pick how you want to send it. The message comes pre-filled.';
-pop.querySelector('[data-via=gmail]').href='https://mail.google.com/mail/?view=cm&fs=1&to='+enc(addr)+'&su='+enc(m.subject)+'&body='+enc(m.body);
-pop.querySelector('[data-via=outlook]').href='https://outlook.live.com/mail/0/deeplink/compose?to='+enc(addr)+'&subject='+enc(m.subject)+'&body='+enc(m.body);
-pop.querySelector('[data-via=app]').href='mailto:'+addr+'?subject='+enc(m.subject)+'&body='+enc(m.body);
-pop.querySelector('.mail-note').textContent='';
+var m=KINDS[k];current=k;form.kind.value=k;
+form.querySelector('.mail-lead').innerHTML='<strong>'+m.lead+'</strong> &middot; this goes straight to my inbox, and I reply by email.';
+form.querySelectorAll('[data-for]').forEach(function(el){el.hidden=el.getAttribute('data-for')!==k});
+form.querySelector('[data-via=gmail]').href='https://mail.google.com/mail/?view=cm&fs=1&to='+enc(addr)+'&su='+enc(m.subject)+'&body='+enc(m.body);
+form.querySelector('[data-via=outlook]').href='https://outlook.live.com/mail/0/deeplink/compose?to='+enc(addr)+'&subject='+enc(m.subject)+'&body='+enc(m.body);
+form.querySelector('[data-via=app]').href='mailto:'+addr+'?subject='+enc(m.subject)+'&body='+enc(m.body);
+say('');
 }
 asks.forEach(function(b){
 b.addEventListener('click',function(){
-var k=b.dataset.kind,open=!pop.hidden&&current===k;
-pop.hidden=open;
+var k=b.dataset.kind,open=!form.hidden&&current===k;
+form.hidden=open;
 asks.forEach(function(x){x.setAttribute('aria-expanded',!open&&x===b)});
-if(!open){fill(k);pop.querySelector('.mail-opt').focus({preventScroll:true})}
+if(!open){fill(k);form.fullname.focus({preventScroll:true})}
 });
 });
-pop.querySelector('[data-via=copy]').addEventListener('click',function(){
-var note=pop.querySelector('.mail-note'),m=KINDS[current];
-function done(){note.textContent='Copied '+addr+'. Subject line: '+m.subject}
-if(navigator.clipboard)navigator.clipboard.writeText(addr).then(done,function(){note.textContent=addr});
-else note.textContent=addr;
+form.querySelector('[data-via=copy]').addEventListener('click',function(){
+function done(){say('Copied '+addr)}
+if(navigator.clipboard)navigator.clipboard.writeText(addr).then(done,function(){say(addr)});
+else say(addr);
+});
+form.addEventListener('input',function(e){var l=e.target.closest('.f');if(l)l.classList.remove('err')});
+form.addEventListener('submit',function(e){
+e.preventDefault();
+if(form._honey.value)return; // a bot filled the hidden field
+var f=form,bad=[].filter.call(f.querySelectorAll('[required]'),function(el){el.value=el.value.trim();return !el.checkValidity()});
+f.querySelectorAll('.f').forEach(function(l){l.classList.remove('err')});
+if(bad.length){
+bad.forEach(function(el){el.closest('.f').classList.add('err')});bad[0].focus();
+say(bad[0].type==='email'&&bad[0].value?'That email address doesn’t look right.':'Please add your name, email and a message.','is-err');return}
+var m=KINDS[current],v=function(n){return f[n].value.trim()};
+var data={_subject:m.subject+' from '+v('fullname')+(v('outlet')?' ('+v('outlet')+')':''),
+_replyto:v('email'),_template:'table',_captcha:'false',
+Request:m.lead,Name:v('fullname'),Email:v('email')};
+data[current==='debate'?'Channel or organization':'Outlet or show']=v('outlet');
+if(current==='debate')data['Proposed resolution']=v('resolution');else data.Topic=v('topic');
+data['Proposed date']=v('date');data.Message=v('message');
+send.disabled=true;send.textContent='Sending…';say('');
+fetch('https://formsubmit.co/ajax/'+addr,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+.then(function(r){return r.json().catch(function(){return{}}).then(function(j){return{ok:r.ok,j:j}})})
+.then(function(x){
+if(!(x.ok&&String(x.j.success)==='true'))throw new Error(x.j.message||'send failed');
+f.querySelectorAll('input:not([type=hidden]),textarea').forEach(function(el){el.value=''});
+say('Thank you, your request is on its way. I’ll reply to '+data.Email+'.','is-ok');
+})
+.catch(function(){say('Sorry, that didn’t send. Please use one of the email links below instead.','is-err')})
+.then(function(){send.disabled=false;send.textContent='Send request'});
 });
 })();
 

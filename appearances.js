@@ -19,6 +19,8 @@ window.APPEARANCES = [
 { type: "press", title: "Future of Donald Trump's MAGA movement questioned after midterms backlash", outlet: "ABC News (Australia)", date: "2026-11-06", url: "https://www.abc.net.au/news/2026-11-06/midterms-put-trump-maga-movement-future-in-question/107348864" },
 { type: "press", title: "I Wasn't Allowed Into A Hasan Piker Event, So I Talked To A Communist On The Sidewalk Instead", outlet: "The Daily Wire", date: "2026-10-01", url: "https://www.dailywire.com/news/i-wasnt-allowed-into-a-hasan-piker-event-so-i-talked-to-a-communist-on-the-sidewalk-instead" },
 { type: "press", title: "Hasan Piker UT event faces venue uncertainty at UT-Austin", outlet: "Austin American-Statesman", date: "2026-09-17", url: "https://www.statesman.com/news/education/article/hasan-piker-ut-austin-free-speech-event-22432903.php" },
+{ type: "press", title: "Conservative activist sparks debate over gender-affirming care", outlet: "The Daily Orange (Syracuse University)", date: "2026-04-15", url: "https://dailyorange.com/2026/04/conservative-activist-sparks-debate-over-gender-affirming-care/" },
+{ type: "press", title: "The Political Pundits of TikTok", outlet: "The New York Times", date: "2020-02-27", url: "https://www.nytimes.com/2020/02/27/style/tiktok-politics-bernie-trump.html" },
 { type: "press", title: "Older and younger conservatives at CPAC are split over Trump's war in Iran", outlet: "Associated Press", date: "2026-03-26", url: "https://apnews.com/article/cpac-iran-trump-war-republicans-959c505d622f4451eb9d3a0bd6a08f99" },
 
 // Debates and video
