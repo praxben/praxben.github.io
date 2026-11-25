@@ -9,6 +9,7 @@
 //   date:   "YYYY-MM-DD"
 //   url:    link to it
 //   youtube (optional): a YouTube video id, to play it right on the page
+//   start   (optional): seconds into the video where you appear, e.g. 331 for 5:31
 //
 // WRITING: articles you wrote for other publications.
 //   title, outlet, date, url (same as above)
@@ -24,6 +25,7 @@ window.APPEARANCES = [
 { type: "press", title: "Older and younger conservatives at CPAC are split over Trump's war in Iran", outlet: "Associated Press", date: "2026-03-26", url: "https://apnews.com/article/cpac-iran-trump-war-republicans-959c505d622f4451eb9d3a0bd6a08f99" },
 
 // Debates and video
+{ type: "video", title: "Inside the \"Blue Bubble\": Austin Before the Midterms", outlet: "Reid Butler · YouTube", date: "2026-04-29", url: "https://www.youtube.com/watch?v=G92cfl5Mx0Q&t=331s", youtube: "G92cfl5Mx0Q", start: 331 },
 { type: "video", title: "Debate: Duopoly Alternatives? vs. Haz Al-Din", outlet: "Young Voices NextGen Debates · Sovereign House, NYC", date: "2024-10-10", url: "https://www.youtube.com/watch?v=CI2isVfWN70", youtube: "CI2isVfWN70" },
 
 // Podcasts

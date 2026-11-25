@@ -389,7 +389,7 @@ var sec=document.getElementById('press'), list=sec.querySelector('.press-list');
 var label={press:'Press',video:'Debate / Video',podcast:'Podcast'};
 list.innerHTML=items.map(function(it){
 var verb=it.type==='press'?'Read':it.type==='podcast'?'Listen':'Watch';
-var player=it.youtube?'<div class="player"><button type="button" data-yt="'+esc(it.youtube)+'" aria-label="Play: '+esc(it.title)+'"><img src="https://i.ytimg.com/vi/'+esc(it.youtube)+'/hqdefault.jpg" alt="" loading="lazy"></button></div>':'';
+var player=it.youtube?'<div class="player"><button type="button" data-yt="'+esc(it.youtube)+'"'+(it.start?' data-start="'+(parseInt(it.start,10)||0)+'"':'')+' aria-label="Play: '+esc(it.title)+'"><img src="https://i.ytimg.com/vi/'+esc(it.youtube)+'/hqdefault.jpg" alt="" loading="lazy"></button></div>':'';
 return '<li class="press-item" data-type="'+esc(it.type)+'"><time datetime="'+esc(it.date)+'">'+fmt(it.date)+'</time>'+
 '<div><span class="eyebrow kind">'+(label[it.type]||'Appearance')+'</span><h3>'+esc(it.title)+'</h3><div class="outlet">'+esc(it.outlet)+'</div></div>'+
 '<a class="go" href="'+esc(it.url)+'" target="_blank" rel="noopener">'+verb+' →</a>'+player+'</li>';
@@ -491,7 +491,7 @@ h.querySelectorAll('nav a').forEach(function(a){a.addEventListener('click',funct
 document.addEventListener('click',function(e){
 var btn=e.target.closest('.player button[data-yt]');if(!btn)return;
 var f=document.createElement('iframe');
-f.src='https://www.youtube-nocookie.com/embed/'+btn.dataset.yt+'?autoplay=1&rel=0';
+f.src='https://www.youtube-nocookie.com/embed/'+btn.dataset.yt+'?autoplay=1&rel=0'+(btn.dataset.start?'&start='+btn.dataset.start:'');
 f.title=btn.getAttribute('aria-label').replace('Play: ','');
 f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
 f.allowFullscreen=true;
